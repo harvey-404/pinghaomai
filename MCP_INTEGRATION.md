@@ -64,3 +64,8 @@ Streamable HTTP JSON-RPC `/mcp`；支持 initialize、ping、tools/list、tools/
 ## 边界
 
 不读取账号收藏或订单，不领券、绑券、购卡、下单或付款。报价可能受平台连接账号权益影响，不承诺所有账号价格一致。所需工具不可用时明确失败，不用演示数据冒充实时价格。
+
+
+## 社交功能（0.3.0）
+
+社交由本站HTTP API提供，复用X-Actor浏览器身份；不调用官方写操作。`GET api/market/social/overview` 获取个人次数、记录和再次约拼，`leaderboard` / `gallery` 获取公开内容。`POST social/invitations/{id}/complete` 仅确认本人完成；`photo/upload` / `agree` / `revoke` 维护当前版本双方授权；`reinvite` 发起、`social/reinvites/{id}` 回复约拼。照片字节接口独立校验授权、版本且禁止缓存。路径均相对本站根目录。新单沿用原quote/publish流程并携带reinviteId，服务端校验原搭子、原门店、约定时间和单次使用。完整规则见docs/SOCIAL.md。

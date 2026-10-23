@@ -17,5 +17,6 @@ jobs:
           node-version: '22'
       - run: python -m unittest discover -p 'test_*.py' -v
       - run: node --check public/app.js
+      - run: node --check public/social.js
       - run: python tools/check_public.py
       - run: python tools/verify_evidence.py

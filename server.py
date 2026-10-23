@@ -135,7 +135,11 @@ class Handler(BaseHTTPRequestHandler):
         parsed=urlparse(self.path);path=parsed.path;q=parse_qs(parsed.query)
         try:
             MCP.begin()
-            if path=='/health':return self.send_json({'ok':True,'version':'0.2.0','ordersEnabled':False})
+            if path=='/health':return self.send_json({'ok':True,'version':'0.3.0','ordersEnabled':False,'socialEnabled':True})
+            if path.startswith('/api/market/social/photos/'):
+                import social
+                raw=social.image(sys.modules[__name__],path.split('/')[-1],q.get('v',[''])[0],self.actor())
+                self.send_response(200);self.send_header('Content-Type','image/png');self.send_header('X-Content-Type-Options','nosniff');self.send_header('Cache-Control','no-store');self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw);return
             if path=='/mcp':
                 self.send_response(405);self.send_header('Allow','POST');self.end_headers();return
             if path.startswith('/api/market/'):
@@ -160,7 +164,7 @@ class Handler(BaseHTTPRequestHandler):
             if path.startswith('/api/rooms/'):
                 with connect() as db:r=load(db,path.split('/')[-1])
                 return self.send_json(view(r,self.actor()))
-            files={'/':'index.html','/app.js':'app.js','/styles.css':'styles.css'}
+            files={'/':'index.html','/app.js':'app.js','/social.js':'social.js','/styles.css':'styles.css'}
             if path not in files:return self.send_json({'error':'页面不存在'},404)
             file=ROOT/'public'/files[path];raw=file.read_bytes();self.send_response(200);self.send_header('Content-Type',{'html':'text/html; charset=utf-8','js':'text/javascript; charset=utf-8','css':'text/css; charset=utf-8'}[file.suffix[1:]]);self.send_header('Cache-Control','no-cache');self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw)
         except LiveError as exc:self.send_json({'error':str(exc),'liveUnavailable':True},502)
@@ -172,7 +176,8 @@ class Handler(BaseHTTPRequestHandler):
         if origin and origin not in allowed:return self.send_json({'error':'请求来源不匹配'},403)
         try:
             MCP.begin();size=int(self.headers.get('Content-Length','0'))
-            if not 0<size<=20000:raise ValueError('请求长度不正确。')
+            max_size=2200000 if urlparse(self.path).path.startswith('/api/market/social/invitations/') and urlparse(self.path).path.endswith('/photo/upload') else 20000
+            if not 0<size<=max_size:raise ValueError('请求长度不正确。')
             body=json.loads(self.rfile.read(size))
             if not isinstance(body,dict):raise ValueError('请求格式不正确。')
             actor=self.actor()

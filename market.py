@@ -6,6 +6,8 @@ class Conflict(ValueError):
     def __init__(self,message,room=None):super().__init__(message);self.room=room
 
 def db_init(db):
+    import social
+    social.init(db)
     db.execute('CREATE TABLE IF NOT EXISTS invitations (id TEXT PRIMARY KEY,status TEXT NOT NULL,owner TEXT NOT NULL,guest TEXT,lease TEXT,lease_until REAL,data TEXT NOT NULL)')
     db.execute('CREATE INDEX IF NOT EXISTS invitation_status ON invitations(status)')
     db.execute('CREATE TABLE IF NOT EXISTS market_quotes (id TEXT PRIMARY KEY,owner TEXT NOT NULL,expires REAL NOT NULL,data TEXT NOT NULL)')
@@ -23,6 +25,8 @@ def recover(db):
 def output(core,row,r,actor):
     r=copy.deepcopy(r);r['status']=row[1];r['role']='host' if row[2]==actor else 'guest' if row[3]==actor else 'visitor'
     r['expired']=dt.datetime.fromisoformat(r['expiresAt'])<=core.now()
+    import social
+    r['social']=social.room_data(core,row,r,actor)
     # Identity secrets and claim leases are never returned.
     return r
 
@@ -102,12 +106,17 @@ def publish(core,body,actor):
         db_init(db);db.execute('BEGIN IMMEDIATE')
         consumed=db.execute('DELETE FROM market_quotes WHERE id=? AND owner=? AND expires>?',(qid,actor,time.time())).rowcount
         if consumed!=1:raise Conflict('同一报价已经发布，请勿重复提交。')
+        import social
+        social.prepare_reinvite(db,core,body.get('reinviteId'),actor,r)
         db.execute('INSERT INTO invitations VALUES (?,?,?,?,?,?,?)',(r['id'],'waiting',actor,None,None,None,json.dumps(r,ensure_ascii=False)))
         rr,data=read(db,r['id']);return output(core,rr,data,actor)
 
 def get(core,id,actor):
     with core.connect() as db:
-        db_init(db);recover(db);row,r=read(db,id);return output(core,row,r,actor)
+        db_init(db);recover(db);row,r=read(db,id)
+        import social
+        social.assert_access(db,row,r,actor)
+        return output(core,row,r,actor)
 
 def listing(core,args,actor):
     store_codes=args.get('storeCodes',[])
@@ -129,7 +138,12 @@ def listing(core,args,actor):
             scope=json.loads(search_row[0])
             if not set(store_codes)<=set(scope):raise ValueError('门店筛选超出本次查询范围。')
         for row in db.execute('SELECT * FROM invitations ORDER BY rowid DESC'):
-            r=output(core,row,json.loads(row[6]),actor)
+            data=json.loads(row[6])
+            if data.get('reinviteId'):
+                import social
+                try:social.assert_access(db,row,data,actor)
+                except ValueError:continue
+            r=output(core,row,data,actor)
             if r['role']!='visitor':mine.append(r)
             if r['status']!='waiting' or r['expired'] or r['role']=='host':continue
             candidates=[]
@@ -153,6 +167,8 @@ def claim(core,id,body,actor):
     name=core.short_text(body.get('name',''),'昵称',16,'新搭子')
     with core.connect() as db:
         db_init(db);db.execute('BEGIN IMMEDIATE');recover(db);row,r=read(db,id)
+        import social
+        social.assert_access(db,row,r,actor)
         if row[2]==actor:raise ValueError('不能领取自己发起的拼单。')
         if row[1]=='matched' and row[3]==actor:return output(core,row,r,actor)
         if row[1]!='waiting':raise Conflict('这单已被领取或正在核价，所有门店只共享一个名额。')
@@ -187,12 +203,14 @@ def action(core,id,action,body,actor):
     fresh=None
     if action=='confirm':
         snapshot=get(core,id,actor)
+        if snapshot.get('hostCompleted') or snapshot.get('guestCompleted'):raise ValueError('已经进入完成确认，请勿再次修改餐品确认。')
         if snapshot['role']=='visitor' or snapshot['status'] not in ('matched','confirmed') or snapshot['expired']:raise ValueError('只有未过期、已领取的拼单可以确认。')
         option=next(x for x in snapshot['options'] if x['store']['id']==snapshot['selectedStore']);m=option['meal']
         fresh=core.live_quote(option['store'],snapshot['requestPickup'],m['id'],m['selections'],m['useCard'],m['foods'])
     with core.connect() as db:
         db_init(db);db.execute('BEGIN IMMEDIATE');recover(db);row,r=read(db,id);v=output(core,row,r,actor);role=v['role'];status=row[1]
         if role=='visitor':raise ValueError('只有拼单双方可以操作。')
+        if r.get('hostCompleted') or r.get('guestCompleted'):raise ValueError('已经进入完成确认，不能取消、退出或重新核价。')
         if action=='cancel':
             if role!='host' or status not in ('waiting','matched','confirmed'):raise Conflict('当前不能取消，正在领取时请稍后重试。')
             status='cancelled'
@@ -275,6 +293,9 @@ def host_suggestions(core,body):
     return {'suggestions':rows[:40],'tasteOptions':taste_choices(menus,pickup),'failures':failures,'basis':'按门店覆盖和菜单参考价筛选；没有历史成交样本，不承诺拼成率。','queriedAt':core.timestamp()}
 
 def get_api(core,path,args,actor):
+    if path.startswith('/api/market/social/'):
+        import social
+        return social.get_api(core,path[len('/api/market/social/'):],args,actor)
     if path=='/api/market/stores':return search(core,args,actor)
     if path=='/api/market/invitations':return listing(core,args,actor)
     if path.startswith('/api/market/invitations/'):return get(core,path.split('/')[-1],actor)
@@ -282,6 +303,9 @@ def get_api(core,path,args,actor):
 
 def post_api(core,path,body,actor):
     if not actor:raise ValueError('请重新打开页面生成本机身份。')
+    if path.startswith('/api/market/social/'):
+        import social
+        return social.post_api(core,path[len('/api/market/social/'):],body,actor)
     if path=='/api/market/location':
         from geo import locate
         return locate(body)

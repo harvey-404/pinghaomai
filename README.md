@@ -26,6 +26,15 @@
 
 按地标范围和门店找单，可填想吃什么、预算。搭子选一家店领取；一处领取后，其余门店同时下架。退出也关闭原邀请，不自动重新上架。
 
+## 拼完之后：自愿的轻社交
+
+- **双方分别确认完成**，各计一次成功拼餐；重复点击和并发请求不重复计数。
+- **站内排行榜**自愿参加，可随时退出；同一对搭子每天最多一次计分。
+- **合照墙**不强制拍照或露脸，双方同意同一版本才公开，任一方撤回即下架；换图重新授权。
+- **再次约拼**向原搭子发邀请，对方接受后重新查询门店和核价，新单仅原搭子可领取。
+
+首页继续保留发起、查看两个主要入口；记录、榜单和合照墙在次级导航。[功能流程与验证](docs/SOCIAL.md)
+
 ## 实测：一份三件套，两个人都省
 
 2026-10-23 查询西安开元、北大街、钟鼓楼三店，预约取餐 2026-10-24 12:00；以下为当次记录，**不是长期价格承诺**：
@@ -87,8 +96,9 @@ python3 server.py --port 8766
 
 ```sh
 python -m unittest discover -p "test_*.py" -v
-python -m compileall -q server.py market.py mcd_transport.py mcp_gateway.py geo.py recommendations.py drink_reference.py
+python -m compileall -q server.py market.py mcd_transport.py mcp_gateway.py geo.py recommendations.py drink_reference.py social.py
 node --check public/app.js
+node --check public/social.js
 python tools/check_public.py
 ```
 
@@ -107,7 +117,7 @@ Python HTTP 服务、SQLite 与原生 HTML/CSS/JavaScript。一个邀请一行�
 
 ## 原创与许可
 
-设计目标来自独立产品讨论，开发过程中使用 Codex 辅助。我们承认已有拆套餐和陌生人拼餐的同类作品，不宣称首创；本作品着重实现双边省钱硬筛选、跨店唯一领取及透明报价。
+设计目标来自独立产品讨论，开发过程中使用 Codex 辅助。我们承认已有拆套餐和陌生人拼餐的同类作品，不宣称首创；本作品着重实现双边省钱硬筛选、跨店唯一领取、透明报价及自愿的饭后连接。
 
 原创代码采用 [MIT License](LICENSE)。许可证不授予麦当劳商标、产品图、菜单数据或第三方服务的权利。餐品图片由官方菜单 URL 动态引用，未把图片资产打包到仓库；演示截图仅用于说明项目流程。详见 [NOTICE.md](NOTICE.md)。
 
