@@ -1,0 +1,227 @@
+{
+  "baseline_commit": "44db7b9bccc36629ec5384316a8a3c630f9d28b7",
+  "captured_at_utc": "2026-10-23T08:44:11.422317+00:00",
+  "hash_scope": "Git blob bytes from the named commit, not filesystem newlines; hashes verify content only, not authorship or trusted creation time.",
+  "files": [
+    {
+      "path": ".github/workflows/verify.yml",
+      "size_bytes": 466,
+      "sha256": "e7bf2360887a5fad5e14671a2e484d41825f24b12ff75a6792edeb2d7aa21bf9"
+    },
+    {
+      "path": ".gitignore",
+      "size_bytes": 136,
+      "sha256": "3a38aeba4a982b20c5f9d2dee6ec0011f20cbc78724ae64497ebf22c5666e88c"
+    },
+    {
+      "path": "CONTEST_DECLARATION.md",
+      "size_bytes": 1723,
+      "sha256": "44a9922e1e0bf96f038c7c1894360e31cc840af9d1c161a5d2f691a8485f7fdc"
+    },
+    {
+      "path": "LICENSE",
+      "size_bytes": 1067,
+      "sha256": "763c83d4f6c4bf612a8db01357123ebdd18288edb371d973aed20288ca0e28c4"
+    },
+    {
+      "path": "MCP_INTEGRATION.md",
+      "size_bytes": 4425,
+      "sha256": "afe3a0ca6a5346f0250bcdf84c0e33e07f307bad4173539bbe307224b13d2883"
+    },
+    {
+      "path": "NOTICE.md",
+      "size_bytes": 1397,
+      "sha256": "63c63b23c9767c83b92fc1e7c4745eb8111ac5de39d076ec28a75250168e754b"
+    },
+    {
+      "path": "README.md",
+      "size_bytes": 7146,
+      "sha256": "79f388253e179a170b4344b853007efeb96d4811e43a24d0d87c3fd2c842f9a9"
+    },
+    {
+      "path": "SECURITY.md",
+      "size_bytes": 1443,
+      "sha256": "5cd59f6c0f8337f200e46d84b97f317bbef6e879892f007d605d166ab797a3f2"
+    },
+    {
+      "path": "docs/DEMO.md",
+      "size_bytes": 2601,
+      "sha256": "6060c877cae0c8b43f1ab06f1971981745dbbb61d8a19baa55b3327519027c37"
+    },
+    {
+      "path": "docs/PROJECT.md",
+      "size_bytes": 2218,
+      "sha256": "9f5f8009b654f0589b2568b5956f02cb990176b3b6a5d9eb1edd630355d7c13e"
+    },
+    {
+      "path": "docs/SUBMISSION.md",
+      "size_bytes": 1114,
+      "sha256": "331724d7c83814329853410c339d8e009b4d5841ed082e8728dba30909c28805"
+    },
+    {
+      "path": "docs/VALIDATION.md",
+      "size_bytes": 3752,
+      "sha256": "d7c554065d70d7cabb93b204f2df43c2d5f9745690a3d4eaf12631a691caa4ea"
+    },
+    {
+      "path": "docs/demo/01-home.jpg",
+      "size_bytes": 48967,
+      "sha256": "16e6804c0a971496b0a4d2473c31d9c84786f0a01202d48f2eb5c55abf566a19"
+    },
+    {
+      "path": "docs/demo/02-recommendation.jpg",
+      "size_bytes": 45747,
+      "sha256": "cfcabc1c7622e20efadc50ab34fd241874610e939039fb0758efd5f753e215b4"
+    },
+    {
+      "path": "docs/demo/03-allocation.jpg",
+      "size_bytes": 46517,
+      "sha256": "514f305b93bf51dff01c4e168e2fab1385902c3893f5e73fd438f4c1f5c22d3c"
+    },
+    {
+      "path": "docs/demo/04-published.jpg",
+      "size_bytes": 51489,
+      "sha256": "97a25d10fcaeec7a773105ee88b7a7c5306fa6ac6e6686ee727391d44488026c"
+    },
+    {
+      "path": "docs/demo/05-guest-finds.jpg",
+      "size_bytes": 44222,
+      "sha256": "b9b4ebc94e4ed5782302c5a2f08cc7e1e90534e344a8f83227b94e7352abedec"
+    },
+    {
+      "path": "docs/demo/06-claimed.jpg",
+      "size_bytes": 51439,
+      "sha256": "48d74f88a9291ee53cb1d5d3edc3a3ab7aec5365a786f6ddaf90401ac89ea6fd"
+    },
+    {
+      "path": "docs/demo/07-confirmed.jpg",
+      "size_bytes": 51803,
+      "sha256": "d367988f90e7bc2f75c3ff9ae86c02f023a7ed42997e58349f3ea3f949e3ff20"
+    },
+    {
+      "path": "docs/demo/captions.ass",
+      "size_bytes": 1472,
+      "sha256": "4b84f33b1f2b87b984f7a47208524677de83e05ee9526efc65f4173601a1b6fd"
+    },
+    {
+      "path": "docs/demo/frames.txt",
+      "size_bytes": 271,
+      "sha256": "62480f6a1d587a752cb420971ab2b391fe0b0598870f19f19c3be632bd766cd7"
+    },
+    {
+      "path": "docs/demo/pinghaomai-demo.mp4",
+      "size_bytes": 509846,
+      "sha256": "5e26d3490a4211e310f7215df11114b8a51c7f4efa45c6f9b435a202f02d8350"
+    },
+    {
+      "path": "docs/evidence/prices.json",
+      "size_bytes": 2002,
+      "sha256": "a71d617b3d3189b5e127b0f6af58c3e36b68fd65843256f45159a57c9747f4bf"
+    },
+    {
+      "path": "docs/images/recommendation.jpg",
+      "size_bytes": 45747,
+      "sha256": "cfcabc1c7622e20efadc50ab34fd241874610e939039fb0758efd5f753e215b4"
+    },
+    {
+      "path": "drink_reference.py",
+      "size_bytes": 3034,
+      "sha256": "612993e58fac5c34003a39c1ef66b997a1e2e4af8eaed4f5cf79d4ba68210043"
+    },
+    {
+      "path": "geo.py",
+      "size_bytes": 2322,
+      "sha256": "5a920f6f2ac064eee45b03e6ca69ad5afb7126ac8618621848c019ba72e320a9"
+    },
+    {
+      "path": "market.py",
+      "size_bytes": 25760,
+      "sha256": "54b08276c624157defc9631d3800bd4fd6742ac2d6e62cecbefb8a399fd2bc01"
+    },
+    {
+      "path": "mcd_transport.py",
+      "size_bytes": 1998,
+      "sha256": "3e11b6b61c561b77878d961611e72ab8e8f2974064d67f70001f8503a80d4ebb"
+    },
+    {
+      "path": "mcp-config.example.json",
+      "size_bytes": 320,
+      "sha256": "8ae71ebdb68dfafc72554f630cb210be9695b75c7b8868594d0831a44a03eed8"
+    },
+    {
+      "path": "mcp_gateway.py",
+      "size_bytes": 2560,
+      "sha256": "7119bcd20af545fd7451d1cc9ce323266a881856a4fec367bd1c3a7dc85d73e5"
+    },
+    {
+      "path": "public/app.js",
+      "size_bytes": 41412,
+      "sha256": "f5179794cbc7b3f9498b18241c44566de221a5b074f5ac3c49230bbbe854720e"
+    },
+    {
+      "path": "public/index.html",
+      "size_bytes": 984,
+      "sha256": "11bad44d3c2955c8ec0306b7d71c4d0358ee1ea36aed9397dbd676a9faec92d8"
+    },
+    {
+      "path": "public/styles.css",
+      "size_bytes": 28045,
+      "sha256": "54a6e6650ba6e4298010d5acccf84bc9dd9bf37853a143db7ad06ce2a4e150c6"
+    },
+    {
+      "path": "recommendations.py",
+      "size_bytes": 10159,
+      "sha256": "c74637b0a7ee9c9d413b30ab1c77c3d4416a9d1f97582f252783d5b8ec603fae"
+    },
+    {
+      "path": "server.py",
+      "size_bytes": 20183,
+      "sha256": "ac35eebaa943a912a8d2308e2214398041bc680a3cd14ef7257e6b60de96bdab"
+    },
+    {
+      "path": "test_drink_reference.py",
+      "size_bytes": 1828,
+      "sha256": "81886344590806a0df97b48689fef01e0846d4f0949b89556621d8acc27fcb8f"
+    },
+    {
+      "path": "test_flows.py",
+      "size_bytes": 5226,
+      "sha256": "49f6b586591c37d9543aafd561385e86c4228bfd35cda6fe72aeae51073ab0c8"
+    },
+    {
+      "path": "test_geo.py",
+      "size_bytes": 1772,
+      "sha256": "674db7dab237441ccbbe20996f84e0374eb280cf751e4fda1a3c5ca98298195f"
+    },
+    {
+      "path": "test_market.py",
+      "size_bytes": 11252,
+      "sha256": "266e78c8e633a2e80b0ee197b80ffc29d082399a8424329980acebfc73059970"
+    },
+    {
+      "path": "test_public_config.py",
+      "size_bytes": 1078,
+      "sha256": "bd326f1eb0b022785f8199c9c35061b822ec9beb52bd5794dd01146dd85e833a"
+    },
+    {
+      "path": "test_recommendations.py",
+      "size_bytes": 4973,
+      "sha256": "05b8a211467a7a15679ba836a8167da1abe158abeda9a610b08d5742a9e4a60e"
+    },
+    {
+      "path": "test_taste.py",
+      "size_bytes": 1516,
+      "sha256": "c236449a55e8b09a73915def53f9f013910f3b442b604e6d217145b8a04e4193"
+    },
+    {
+      "path": "tools/check_public.py",
+      "size_bytes": 1528,
+      "sha256": "01368e9daa6b37f73b9f8c9cec24ecaacb02b5c6584f97b3f5728a2c7ab79f2f"
+    },
+    {
+      "path": "tools/live_smoke.py",
+      "size_bytes": 3507,
+      "sha256": "4dddd11f7804a5411260aa6e4738c42f219becb766db8b87b64fd6e35fe87bbc"
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "prepared_at_utc": "2026-10-23T08:44:11.422317+00:00",
+  "scope": "Minimal derived index from selected local original user messages; raw conversation is private. Times are locally recorded, not a trusted timestamp or proof of first invention.",
+  "events": [
+    {
+      "timestamp_utc": "2026-10-22T14:48:16.828Z",
+      "timestamp_beijing": "2026-10-22T22:48:16.828000+08:00",
+      "meaning": "用户首次在本记录提出拼好麦名称及多人套餐拆分构想",
+      "text_sha256": "9854f5d39d73571143752bd7f19053830aed5649498432a488a747480339fc24"
+    },
+    {
+      "timestamp_utc": "2026-10-22T14:48:59.607Z",
+      "timestamp_beijing": "2026-10-22T22:48:59.607000+08:00",
+      "meaning": "用户主动要求同类调研，未宣称首创",
+      "text_sha256": "248ffd0a62c7fa44509556ae49ddfdbe3c6fb9f2ffe0fe3145a65bd293e7e841"
+    },
+    {
+      "timestamp_utc": "2026-10-22T14:55:01.789Z",
+      "timestamp_beijing": "2026-10-22T22:55:01.789000+08:00",
+      "meaning": "陌生人、门店时间口味匹配与主动让利构想",
+      "text_sha256": "737c068837c1e6907ea44f76e6d5b2afd6c322b700c1cef5a79b2605a84ca3df"
+    },
+    {
+      "timestamp_utc": "2026-10-22T15:34:09.888Z",
+      "timestamp_beijing": "2026-10-22T23:34:09.888000+08:00",
+      "meaning": "收敛为两个人拼",
+      "text_sha256": "afb3bb0bbd83187d7f1dc395b3f044bc689688912a2dc7e6273fcabf70a01f31"
+    },
+    {
+      "timestamp_utc": "2026-10-22T15:40:51.785Z",
+      "timestamp_beijing": "2026-10-22T23:40:51.785000+08:00",
+      "meaning": "授权制作可演示版本",
+      "text_sha256": "a75269fc501df730bce42af8bdc292cd9872046b797ec4210a33a0d763b29531"
+    },
+    {
+      "timestamp_utc": "2026-10-22T16:19:05.401Z",
+      "timestamp_beijing": "2026-10-23T00:19:05.401000+08:00",
+      "meaning": "真实只读MCP和两个入口",
+      "text_sha256": "08c796f7da368e7a64de8e7ce99b8f9bc1bc2339302d14a858b577122673df07"
+    },
+    {
+      "timestamp_utc": "2026-10-22T16:50:10.743Z",
+      "timestamp_beijing": "2026-10-23T00:50:10.743000+08:00",
+      "meaning": "多门店发布、跨店唯一领取与自身MCP",
+      "text_sha256": "e8260640454dc187d75d4ab81e171c6f11adb126ce809ee45dc18560db6a94c0"
+    },
+    {
+      "timestamp_utc": "2026-10-23T03:50:32.048Z",
+      "timestamp_beijing": "2026-10-23T11:50:32.048000+08:00",
+      "meaning": "自己金额优先、最多三个和剩余餐品评分",
+      "text_sha256": "ce8fa81615f570eafaa76031036c82fca39d37624904d529411d71a83c1e03d0"
+    },
+    {
+      "timestamp_utc": "2026-10-23T04:26:11.196Z",
+      "timestamp_beijing": "2026-10-23T12:26:11.196000+08:00",
+      "meaning": "比单点贵的不推荐",
+      "text_sha256": "96880ee33461e3d184bebe9f29671e05d9e718296517374225ff3ae925625b73"
+    },
+    {
+      "timestamp_utc": "2026-10-23T04:43:27.154Z",
+      "timestamp_beijing": "2026-10-23T12:43:27.154000+08:00",
+      "meaning": "双方都省钱并展示双方节省额",
+      "text_sha256": "ed75acc2a3ed2234e54e6c9afa342d149631ecebc2f8c7d4cfde79b43b2cf44c"
+    },
+    {
+      "timestamp_utc": "2026-10-23T05:30:15.040Z",
+      "timestamp_beijing": "2026-10-23T13:30:15.040000+08:00",
+      "meaning": "要求通过MCP补饮料规格价格并实测",
+      "text_sha256": "f0c65432afe6e604d46c091d6c9cc6c59501906f52677fe5647e76ef40895728"
+    },
+    {
+      "timestamp_utc": "2026-10-23T07:14:56.429Z",
+      "timestamp_beijing": "2026-10-23T15:14:56.429000+08:00",
+      "meaning": "明确讨论麦麦现拼同类，不隐瞒比较过程",
+      "text_sha256": "f7f53d6fd17563ae6448237c58684f675cdf9d67d3298bcc2bd7c1c47d393bc4"
+    },
+    {
+      "timestamp_utc": "2026-10-23T07:19:35.194Z",
+      "timestamp_beijing": "2026-10-23T15:19:35.194000+08:00",
+      "meaning": "目标为参赛及积累作品",
+      "text_sha256": "924f9c009405248ed973c4da73320bd3076e220c13102a07fa75544fbe7bbd95"
+    },
+    {
+      "timestamp_utc": "2026-10-23T08:03:34.725Z",
+      "timestamp_beijing": "2026-10-23T16:03:34.725000+08:00",
+      "meaning": "用户提出成功次数、排名和双人合照墙的新方向",
+      "text_sha256": "26f316f3cbdf562c18e6b774b56753a487de22a4f26a6793ba60eaf2fa8bfa64"
+    }
+  ]
+}

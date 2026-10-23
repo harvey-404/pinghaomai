@@ -1,0 +1,10 @@
+{
+  "captured_at_utc": "2026-10-23T08:44:11.422317+00:00",
+  "private_manifest_file": "MANIFEST.sha256.json",
+  "private_manifest_sha256": "f31e03a664b6464792bdd655d76be77deacbc083b3da4bbcf3880ff9abcf45a0",
+  "evidence_files": 73,
+  "selected_original_user_records": 14,
+  "deployment_archives_hash_only": 12,
+  "baseline_commit": "44db7b9bccc36629ec5384316a8a3c630f9d28b7",
+  "limits": "Content commitment only. No trusted timestamp, notarization, proof of first invention, or full code similarity audit. Private contents are not published."
+}
