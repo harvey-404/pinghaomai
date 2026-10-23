@@ -1,0 +1,73 @@
+{
+  "checked_date_beijing": "2026-10-23",
+  "issue_records_read": 1119,
+  "repository_links_normalized": 961,
+  "readmes_retrieved": 950,
+  "unavailable_readmes": [
+    "1parado/mcdaily",
+    "Librowner14/privite",
+    "dandan1232/mai-recap",
+    "fan59835402/mcd-party-scout",
+    "hhlllkkk/mcctl",
+    "jokercaijojo/maimai-watchdog",
+    "ly18z/McArchaeologist",
+    "shellteo/mcd-nft",
+    "yifei245/mcd-nutrition-butler",
+    "zddamn/mcd-saver",
+    "zmh07069/mcd-saver-skill"
+  ],
+  "method": "Public official contest issue records, including duplicates and unsuccessful applications; automated README keyword screening plus manual close reading. These counts do not certify accepted entrants, complete implementation, absence of unmentioned features or first invention. Raw third-party source copies remain private.",
+  "keywords": [
+    "合照",
+    "合影",
+    "照片墙",
+    "相册",
+    "拼单次数",
+    "成团次数",
+    "成功次数",
+    "排行榜",
+    "段位",
+    "信用",
+    "陌生人",
+    "固定饭搭子",
+    "再次约饭"
+  ],
+  "key_projects": [
+    {
+      "repo": "MX168/maifandazi",
+      "issue_url": "https://github.com/M-China/mcd-developer-innovation-challenge/issues/874",
+      "observed_head_commit": "5675ea568387ae349aa3dc3376e4884c5aaf7117",
+      "readme_sha256": "aa3923271a9976aa767cea7db6c5a46e5854079b0b853d52dbc1265a3338f7c4"
+    },
+    {
+      "repo": "Aresuae/maimai-hepai-public",
+      "issue_url": "https://github.com/M-China/mcd-developer-innovation-challenge/issues/1058",
+      "observed_head_commit": "3001f466f01da604b2edc83b065d4fae69838f43",
+      "readme_sha256": "f088a2eb79bbbcdebdf93f96b46326d7ba9a2ac403a4854e4c2d7f8acd796e54"
+    },
+    {
+      "repo": "archerko-code/mcd-meal-community",
+      "issue_url": "https://github.com/M-China/mcd-developer-innovation-challenge/issues/183",
+      "observed_head_commit": "8ce37a06a6bb4cdf1adda65d273ffd24b364b30b",
+      "readme_sha256": "1e915871f64abee3b3b7aa04d57f67ccbff8afc4f663e69710d87286bfa4dd1f"
+    },
+    {
+      "repo": "xunxuntj/mcd-duo-wrapped",
+      "issue_url": "https://github.com/M-China/mcd-developer-innovation-challenge/issues/669",
+      "observed_head_commit": "53a2d6f605663770281c24a6066caa1efdfcb5d7",
+      "readme_sha256": "a9173088d49e7396721a7258a38a9139c47e6f03c92ccc12d91bbef55159c457"
+    },
+    {
+      "repo": "lululynne/maimai-xianpin",
+      "issue_url": "https://github.com/M-China/mcd-developer-innovation-challenge/issues/865",
+      "observed_head_commit": "2c4e4688c7dd4cff6d1daef1b990133807a6f89e",
+      "readme_sha256": "d9b13e9af1e2006269906959dfbcbb286de0435288993c7665560f5b9b2373bc"
+    },
+    {
+      "repo": "Young625/mcd-persona-card",
+      "issue_url": "https://github.com/M-China/mcd-developer-innovation-challenge/issues/46",
+      "observed_head_commit": "16fdb71a18ce450a9456c3c2b54ae152b1b393e9",
+      "readme_sha256": "0d81f088905ec609cbb4edc8622954893ba0282d5aad126d9e5116a04622f112"
+    }
+  ]
+}

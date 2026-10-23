@@ -114,5 +114,6 @@ Python HTTP 服务、SQLite 与原生 HTML/CSS/JavaScript。一个邀请一行�
 ## 开发过程与后续构想
 
 - [制作过程与证据说明](docs/AUTHORSHIP.md)：需求演进、公开基线、文件哈希和证明边界；Codex辅助开发，不宣称首创。
-- [轻社交同类调研](docs/SOCIAL_RESEARCH.md)：公开先例、对照和待验证假设；社交功能尚未实现。
+- [本次比赛轻社交同类核查](docs/CONTEST_SOCIAL_RESEARCH.md)：950份README筛查与重点作品对照；社交功能尚未实现。
+- [外部产品背景调研](docs/SOCIAL_RESEARCH.md)：补充材料，不替代比赛内核查。
 - 内容校验：`python tools/verify_evidence.py`。这是哈希核对，不是原创认证或可信时间戳。
