@@ -1,0 +1,71 @@
+{
+  "queriedAt": "2026-10-23T13:32:32+08:00",
+  "pickup": "2026-10-24T12:00",
+  "meal": "麦辣鸡腿汉堡三件套",
+  "options": [
+    {
+      "store": "麦当劳西安开元餐厅",
+      "storeCode": "1960622",
+      "totalCents": 3350,
+      "traceId": "f7832e098dbca4fb832d1a658213e5df",
+      "foods": [
+        {
+          "name": "麦辣鸡腿汉堡",
+          "referenceCents": 2250,
+          "referenceSource": null
+        },
+        {
+          "name": "中薯条",
+          "referenceCents": 1450,
+          "referenceSource": null
+        },
+        {
+          "name": "可乐中杯",
+          "referenceCents": 1000,
+          "referenceSource": {
+            "kind": "single-item-mcp-quote",
+            "parentCode": "9900008751",
+            "variantCode": "3050",
+            "storeCode": "1960622",
+            "reservationDate": "2026-10-24 12:00",
+            "traceId": "aaf5cebba2aaa3b5434ff4bfa9d9f064",
+            "queriedAt": "2026-10-23T13:32:30+08:00"
+          }
+        }
+      ]
+    }
+  ],
+  "plan": {
+    "hostItems": [
+      "1-0"
+    ],
+    "hostFoods": [
+      "麦辣鸡腿汉堡"
+    ],
+    "guestFoods": [
+      "中薯条",
+      "可乐中杯"
+    ],
+    "hostPay": 1604,
+    "guestPayMin": 1746,
+    "guestPayMax": 1746,
+    "hostReferenceCents": 2250,
+    "hostSavingCents": 646,
+    "guestSavingMin": 704,
+    "guestSavingMax": 704,
+    "bothSave": true,
+    "guestScore": 74,
+    "scoreReasons": [
+      "搭子金额约为剩余餐品单点参考价的71%（22/40）",
+      "经典餐品匹配 20/20",
+      "主食或小食充实度 12/20",
+      "食物与饮品组合 10/10",
+      "门店覆盖 10/10"
+    ],
+    "scoreBasis": "取各发布门店中最低分，规则评分，不是拼成概率",
+    "allocationBasis": "以最低建议承担额作为所有门店的统一金额；菜单单点参考价比例",
+    "totalMin": 3350,
+    "totalMax": 3350
+  },
+  "note": "Historical read-only quotation, not an order or future price guarantee"
+}

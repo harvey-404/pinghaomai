@@ -1,0 +1,15 @@
+file '01-home.jpg'
+duration 6
+file '02-recommendation.jpg'
+duration 12
+file '03-allocation.jpg'
+duration 8
+file '04-published.jpg'
+duration 8
+file '05-guest-finds.jpg'
+duration 8
+file '06-claimed.jpg'
+duration 8
+file '07-confirmed.jpg'
+duration 10
+file '07-confirmed.jpg'

@@ -1,0 +1,14 @@
+{
+  "mcpServers": {
+    "mcd-mcp": {
+      "type": "streamablehttp",
+      "url": "https://mcp.mcd.cn",
+      "headers": {"Authorization": "Bearer ${MCD_TOKEN}"}
+    },
+    "pinghaomai": {
+      "type": "streamablehttp",
+      "url": "http://127.0.0.1:8766/mcp",
+      "headers": {"X-Actor": "${PHM_ACTOR}"}
+    }
+  }
+}

@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.sqlite*
+*.db
+*.log
+*.jsonl
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+*.pfx
+*.tar.gz
+.local/
+private/
+verification/
