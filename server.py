@@ -135,7 +135,7 @@ class Handler(BaseHTTPRequestHandler):
         parsed=urlparse(self.path);path=parsed.path;q=parse_qs(parsed.query)
         try:
             MCP.begin()
-            if path=='/health':return self.send_json({'ok':True,'version':'0.3.0','ordersEnabled':False,'socialEnabled':True})
+            if path=='/health':return self.send_json({'ok':True,'version':'0.3.1','ordersEnabled':False,'socialEnabled':True})
             if path.startswith('/api/market/social/photos/'):
                 import social
                 raw=social.image(sys.modules[__name__],path.split('/')[-1],q.get('v',[''])[0],self.actor())
@@ -164,9 +164,9 @@ class Handler(BaseHTTPRequestHandler):
             if path.startswith('/api/rooms/'):
                 with connect() as db:r=load(db,path.split('/')[-1])
                 return self.send_json(view(r,self.actor()))
-            files={'/':'index.html','/app.js':'app.js','/social.js':'social.js','/styles.css':'styles.css'}
+            files={'/':'index.html','/app.js':'app.js','/social.js':'social.js','/styles.css':'styles.css',**{f'/anime-pair-{i:02d}.webp':f'anime-pair-{i:02d}.webp' for i in range(1,7)}}
             if path not in files:return self.send_json({'error':'页面不存在'},404)
-            file=ROOT/'public'/files[path];raw=file.read_bytes();self.send_response(200);self.send_header('Content-Type',{'html':'text/html; charset=utf-8','js':'text/javascript; charset=utf-8','css':'text/css; charset=utf-8'}[file.suffix[1:]]);self.send_header('Cache-Control','no-cache');self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw)
+            file=ROOT/'public'/files[path];raw=file.read_bytes();self.send_response(200);self.send_header('Content-Type',{'html':'text/html; charset=utf-8','js':'text/javascript; charset=utf-8','css':'text/css; charset=utf-8','webp':'image/webp'}[file.suffix[1:]]);self.send_header('Cache-Control','public, max-age=86400' if file.suffix=='.webp' else 'no-cache');self.send_header('Content-Length',str(len(raw)));self.end_headers();self.wfile.write(raw)
         except LiveError as exc:self.send_json({'error':str(exc),'liveUnavailable':True},502)
         except (ValueError,KeyError,TypeError) as exc:self.send_json({'error':str(exc)},400)
         except Exception:self.send_json({'error':'查询服务暂时异常，请重试。'},500)

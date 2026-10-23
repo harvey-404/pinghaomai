@@ -1,5 +1,5 @@
 'use strict';
-const CS={data:null,board:null,gallery:null,loading:false,tab:'mine',draft:null,caption:'',preview:null,previewKey:null,previewLoading:null,again:null};
+const CS={data:null,board:null,gallery:null,loading:false,tab:'mine',draft:null,caption:'',preview:null,previewKey:null,previewLoading:null,again:null,optionalRoom:null,homeLoaded:false,homeLoading:false};
 try{CS.again=JSON.parse(sessionStorage.getItem('phm-again')||'null');}catch{}
 function socialNav(){return `<nav class="social-nav" aria-label="拼餐记录与社区"><a href="#social" data-social-nav="mine">我的拼餐</a><a href="#social" data-social-nav="board">站内排行榜</a><a href="#social" data-social-nav="gallery">合照墙</a></nav>`;}
 function statsText(s){return `双方确认完成 ${s?.completedCount||0} 次`;}
@@ -8,9 +8,9 @@ function socialRoom(r){
  if(!mine)return '';
  const complete=['confirmed','completed'].includes(r.status)?`<section class="panel"><h3>04 · 完成这一次拼餐</h3><p>先完成实际分餐或交接，再分别确认。双方都确认后，各计入一次成功记录。</p><div class="completion-pair"><span>${E(r.hostName)}：${r.hostCompleted?'✓ 已确认完成':'等待确认完成'}</span><span>${E(r.guestName)}：${r.guestCompleted?'✓ 已确认完成':'等待确认完成'}</span></div>${done?'<div class="success-banner">双方已确认完成，这次拼餐已经记入你们的记录。</div>':`<button class="primary" data-social-complete ${S.busy||r[r.role+'Completed']?'disabled':''}>${r[r.role+'Completed']?'我已确认，等对方完成':'我已完成分餐／交接'}</button>`}<p class="source-note">${E(r.social?.completionBasis)}。同一对搭子每天最多1次计入榜单，成功记录仍逐单保留。</p></section>`:'';
  const consent=ph?`<div class="photo-consent"><img id="pair-photo" class="pair-photo" alt="这次拼餐的合照预览" ${CS.previewKey===ph.version&&CS.preview?`src="${E(CS.preview)}"`:''}><p>${E(ph.caption)}</p><p>发起人${ph.hostAgreed?'已同意':'未同意'} · 搭子${ph.guestAgreed?'已同意':'未同意'} · <strong>${ph.public?'已公开在合照墙':'仅双方可见'}</strong></p>${!ph[r.role+'Agreed']?'<label class="consent-check"><input id="photo-agree-check" type="checkbox">我同意将这张照片、双方昵称和门店名称公开到合照墙</label><button class="primary" data-photo-agree>同意公开这张照片</button>':'<button class="secondary" data-photo-revoke>撤回我的同意并下架</button>'}<p class="source-note">任一方撤回，公开墙与图片接口立即停止展示；已经被其他人保存的副本无法收回。更换照片需双方重新同意。</p></div>`:'';
- const photo=done?`<section class="panel"><h3>05 · 自愿留一张合照</h3><p>不强制拍照或露脸。只有双方同意同一版本，才会公开。</p>${consent}<label class="field"><span>${ph?'换一张照片（双方重新同意）':'选择照片'}</span><input id="pair-file" type="file" accept="image/jpeg,image/png,image/webp"></label>${CS.draft?`<img class="pair-photo" alt="待上传照片" src="${CS.draft}"><label class="field"><span>照片说明（选填）</span><input id="photo-caption" maxlength="80" value="${E(CS.caption)}" placeholder="记录这次刚好的相遇"></label><label class="consent-check"><input type="checkbox" id="photo-upload-check">我有权分享这张照片，同意公开照片、双方昵称和门店名称；等待对方同意后展示</label><button class="primary" data-photo-upload>上传并等待对方同意</button>`:''}<p class="source-note">上传前在浏览器缩小为PNG，服务器重新编码并移除附带元数据。不要上传不愿公开的内容。</p></section>`:'';
- const again=done?`<section class="panel"><h3>06 · 下次还一起拼吗？</h3><p>邀请这次的搭子在同一家门店再拼一次。对方接受后，由你重新选餐核价，旧价格不会沿用。</p><label class="field"><span>未来7天的约拼时间</span><input type="datetime-local" id="again-time" value="${nextPickup()}" aria-label="下次约拼时间"></label><label class="field"><span>给搭子留句话</span><input id="again-note" maxlength="100" placeholder="例如：下次午休还一起吃？"></label><button class="secondary" data-reinvite>向这位搭子发出邀请</button><a class="text-link" href="#social">查看收到的邀请与回复 →</a></section>`:'';
- return `<div class="social-detail"><div class="section-head"><h3>拼完这一餐，再留下点什么</h3><a href="#social">我的拼餐与社区 →</a></div><div class="social-columns">${complete}${photo}${again}</div></div>`;
+ const photo=done?`<section class="panel"><h3>自愿留一张合照</h3><p>不强制拍照或露脸。只有双方同意同一版本，才会公开。</p>${consent}<label class="field"><span>${ph?'换一张照片（双方重新同意）':'选择照片'}</span><input id="pair-file" type="file" accept="image/jpeg,image/png,image/webp"></label>${CS.draft?`<img class="pair-photo" alt="待上传照片" src="${CS.draft}"><label class="field"><span>照片说明（选填）</span><input id="photo-caption" maxlength="80" value="${E(CS.caption)}" placeholder="记录这次刚好的相遇"></label><label class="consent-check"><input type="checkbox" id="photo-upload-check">我有权分享这张照片，同意公开照片、双方昵称和门店名称；等待对方同意后展示</label><button class="primary" data-photo-upload>上传并等待对方同意</button>`:''}<p class="source-note">上传前在浏览器缩小为PNG，服务器重新编码并移除附带元数据。不要上传不愿公开的内容。</p></section>`:'';
+ const again=done?`<section class="panel"><h3>下次还一起拼吗？</h3><p>邀请这次的搭子在同一家门店再拼一次。对方接受后，由你重新选餐核价，旧价格不会沿用。</p><label class="field"><span>未来7天的约拼时间</span><input type="datetime-local" id="again-time" value="${nextPickup()}" aria-label="下次约拼时间"></label><label class="field"><span>给搭子留句话</span><input id="again-note" maxlength="100" placeholder="例如：下次午休还一起吃？"></label><button class="secondary" data-reinvite>向这位搭子发出邀请</button><a class="text-link" href="#social">查看收到的邀请与回复 →</a></section>`:'';
+ return `<div class="social-detail">${complete}${done?`<details class="optional-social" id="optional-social" ${CS.optionalRoom===r.id?'open':''}><summary><span><strong>合照与再次约拼</strong><small>完全自愿，不影响这次拼餐的完成记录</small></span><span class="optional-arrow">＋</span></summary><div class="social-columns">${photo}${again}</div></details>`:''}</div>`;
 }
 function againBanner(){return CS.again?`<div class="notice">正在为原搭子准备定向拼单：沿用约定门店和时间，重新核价后仅原搭子可领取。<button class="quiet" data-again-clear>退出定向模式</button></div>`:'';}
 function socialPage(){
@@ -27,6 +27,8 @@ async function loadSocial(){
  catch(e){S.error=e.message;}finally{CS.loading=false;if(route()==='social')render();}
 }
 function socialBind(){
+ const optional=$('#optional-social');if(optional)optional.ontoggle=()=>{CS.optionalRoom=optional.open?S.room.id:null;};
+ if(route()==='home'&&!CS.homeLoaded&&!CS.homeLoading)queueMicrotask(loadHomeGallery);
  if(route()==='social'&&!CS.data&&!CS.loading)queueMicrotask(loadSocial);
  if($('#rank-form'))$('#rank-form').onsubmit=e=>{e.preventDefault();const data={name:$('#rank-name').value,rankOptIn:$('#rank-opt-in').checked};work(async()=>{CS.data=await api('social/profile',data);CS.board=await api('social/leaderboard');toast('榜单设置已保存');});};
  const ph=route()==='room'?S.room?.social?.photo:null;
@@ -75,3 +77,15 @@ document.addEventListener('click',e=>{
 document.addEventListener('change',e=>{if(e.target.id==='pair-file'){const file=e.target.files[0];work(async()=>{CS.draft=await normalizedPhoto(file);CS.caption='';});}});
 window.addEventListener('hashchange',()=>{if(route()==='social')loadSocial();else{CS.draft=null;CS.caption='';}});
 setInterval(()=>{if(route()==='social'&&!S.busy&&!CS.loading&&document.visibilityState==='visible'&&!['INPUT','TEXTAREA'].includes(document.activeElement?.tagName))loadSocial();},10000);
+
+const ANIME_PAIR_SCENES=['窗边的午后','一起吃顿午饭','下班后的碰杯','秋日刚好遇见','雨天也有搭子','午休的好心情'];
+function homePhotoPreview(){
+ const real=(CS.gallery?.entries||[]).slice(0,6);
+ const cards=real.length?real.map(p=>`<article class="home-photo-card"><img src="${E(new URL('api/market/social/photos/'+p.id+'?v='+encodeURIComponent(p.version),base).href)}" alt="${E(p.caption||'双方同意公开的拼餐合照')}" loading="lazy" width="1448" height="1086"><div><strong>${E(p.hostName)} × ${E(p.guestName)}</strong><span>双方同意公开</span></div></article>`).join(''):ANIME_PAIR_SCENES.map((title,i)=>`<article class="home-photo-card is-illustration"><img src="${E(new URL('anime-pair-0'+(i+1)+'.webp',base).href)}" alt="${E(title)} · AI二次元双人拼餐示意图" loading="lazy" decoding="async" width="1448" height="1086"><div><strong>${E(title)}</strong><span>AI 示意图</span></div></article>`).join('');
+ return `<section class="home-photo-section" aria-labelledby="home-photo-title"><div class="home-photo-heading"><div><div class="eyebrow">A MEAL, A LITTLE CONNECTION</div><h2 id="home-photo-title">刚好一餐，也可以是一次相遇。</h2><p>${real.length?'看看大家自愿留下的拼餐瞬间。':'拼完可以挥手再见，也可以自愿留个纪念。'}</p></div><a href="#social" data-social-nav="gallery">看看合照墙 ↗</a></div>${!real.length?'<p class="illustration-note">以下为 GPT 生成的二次元示意图，非真实用户合照或成交记录。</p>':''}<div class="home-photo-grid">${cards}</div><p class="source-note">拍不拍、露不露脸，都由你们决定。真实合照只有双方同意才公开，任一方可撤回。</p></section>`;
+}
+async function loadHomeGallery(){
+ if(CS.homeLoading)return;CS.homeLoading=true;let changed=false;
+ try{const next=await api('social/gallery');changed=JSON.stringify(next.entries)!==JSON.stringify(CS.gallery?.entries||[]);CS.gallery=next;}catch{}finally{CS.homeLoaded=true;CS.homeLoading=false;if(route()==='home'&&changed)render();}
+}
+setInterval(()=>{if(route()==='home'&&!S.busy&&!CS.homeLoading&&document.visibilityState==='visible')loadHomeGallery();},10000);

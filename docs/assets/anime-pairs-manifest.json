@@ -1,0 +1,44 @@
+[
+  {
+    "index": 1,
+    "file": "anime-pair-01.png",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "7761b6d7d6efac43f56c5ac73021bb743637138481cbaa246c78649651910988"
+  },
+  {
+    "index": 2,
+    "file": "anime-pair-02.png",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "9a1a4f07c2be60a8f82cd9f8162449bac64f9b8c83387f3aee9d60526fadac92"
+  },
+  {
+    "index": 3,
+    "file": "anime-pair-03.png",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "566add4557e431796568711bc6f367cda7a52c7d5ef40f08f2a207adf71061ae"
+  },
+  {
+    "index": 4,
+    "file": "anime-pair-04.png",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "12c3f77b6f575aa67cfc142ea78beed0a6b1457390d2ef0046299b2cd58d45a7"
+  },
+  {
+    "index": 5,
+    "file": "anime-pair-05.png",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "d11989813c5031944a0be025d2bdaa726dfddb4a8686a90de186ecc895c70cc9"
+  },
+  {
+    "index": 6,
+    "file": "anime-pair-06.png",
+    "width": 1448,
+    "height": 1086,
+    "sha256": "1ba2aab4e5f3678d99088884aac7579637ae8c8fd8c000c615aa3e6484100f52"
+  }
+]

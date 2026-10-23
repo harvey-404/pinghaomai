@@ -1,0 +1,68 @@
+[
+  {
+    "file": "anime-pair-01.webp",
+    "source": "anime-pair-01.png",
+    "dimensions": [
+      1448,
+      1086
+    ],
+    "export": "WebP quality 86; original PNG retained; no crop or resize",
+    "bytes": 208274,
+    "sha256": "e6c158b665edcb3e4ea7dfd3b5658e9211f25d9a331715a239cb8d74ef844f52"
+  },
+  {
+    "file": "anime-pair-02.webp",
+    "source": "anime-pair-02.png",
+    "dimensions": [
+      1448,
+      1086
+    ],
+    "export": "WebP quality 86; original PNG retained; no crop or resize",
+    "bytes": 210104,
+    "sha256": "c4c262fcc79828a7136fa8ddfcd22e1d90744304344741387fb0cb2b88a2a92f"
+  },
+  {
+    "file": "anime-pair-03.webp",
+    "source": "anime-pair-03.png",
+    "dimensions": [
+      1448,
+      1086
+    ],
+    "export": "WebP quality 86; original PNG retained; no crop or resize",
+    "bytes": 217856,
+    "sha256": "532f00c76b92b1e4411e6e754a833d79f8dfbd4a94077f17359c987bfd57ae0d"
+  },
+  {
+    "file": "anime-pair-04.webp",
+    "source": "anime-pair-04.png",
+    "dimensions": [
+      1448,
+      1086
+    ],
+    "export": "WebP quality 86; original PNG retained; no crop or resize",
+    "bytes": 304886,
+    "sha256": "532218719d9a1cba8b203ff3e22a45c1d6aaf29a506fcc62ec5233c0393090aa"
+  },
+  {
+    "file": "anime-pair-05.webp",
+    "source": "anime-pair-05.png",
+    "dimensions": [
+      1448,
+      1086
+    ],
+    "export": "WebP quality 86; original PNG retained; no crop or resize",
+    "bytes": 241842,
+    "sha256": "eeea2b48a58b458c6cfb83aa773a4ba637d1c215e4bce4b4990879adf3a074a7"
+  },
+  {
+    "file": "anime-pair-06.webp",
+    "source": "anime-pair-06.png",
+    "dimensions": [
+      1448,
+      1086
+    ],
+    "export": "WebP quality 86; original PNG retained; no crop or resize",
+    "bytes": 229742,
+    "sha256": "2bf2004491f693624ab807461eaabccde9a62d26b331fc877065f1814cf669b4"
+  }
+]
